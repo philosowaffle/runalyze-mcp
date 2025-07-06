@@ -35,8 +35,8 @@ dotnet test
 
 ## MCP Tool Definitions
 
-All MCP tool definitions are managed in `RunalyzeMcp/ToolDefinitions.cs` and referenced in `Program.cs`. To add or modify MCP tools, update the static list in ToolDefinitions.cs.
+All 47 Runalyze API endpoints are now exposed as MCP tools. Tool definitions are managed in `RunalyzeMcp/ToolDefinitions.cs` and referenced in `Program.cs`. To add or modify MCP tools, update the static list in ToolDefinitions.cs.
 
 ## MCP Tool Handler
 
-Tool execution logic is implemented in `RunalyzeMcp/McpToolHandler.cs`. This static class contains the `HandleToolCallAsync` method that processes all MCP tool calls. To modify tool behavior or add new tool implementations, update this class. 
+Tool execution logic for all tools is implemented in `RunalyzeMcp/McpToolHandler.cs`. This static class contains the `HandleToolCallAsync` method that processes all MCP tool calls. To modify tool behavior or add new tool implementations, update this class. 
