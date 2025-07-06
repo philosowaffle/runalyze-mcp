@@ -17,12 +17,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
-    labels:
-      - "com.docker.compose.project=runalyze-mcp"
-      - "com.docker.compose.service=runalyze-mcp"
-      - "traefik.enable=true"
-      - "traefik.http.routers.runalyze-mcp.rule=Host(`runalyze-mcp.local`)"
-      - "traefik.http.services.runalyze-mcp.loadbalancer.server.port=8080"
 
 networks:
   default:

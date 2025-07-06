@@ -13,33 +13,36 @@ builder.WebHost.UseUrls("http://0.0.0.0:8080");
 builder.Services.AddHttpClient<RunalyzeApiClient>();
 
 // Configure MCP server
-builder.Services.AddMcpServer(options =>
-{
-    options.ServerInfo = new Implementation { Name = "RunalyzeMCP", Version = "1.0.0" };
-    options.Capabilities = new ServerCapabilities
+builder.Services
+    .AddMcpServer(options =>
     {
-        Tools = new ToolsCapability
+        options.ServerInfo = new Implementation { Name = "RunalyzeMCP", Version = "1.0.0" };
+        options.Capabilities = new ServerCapabilities
         {
-            ListToolsHandler = (request, cancellationToken) =>
+            Tools = new ToolsCapability
             {
-                return ValueTask.FromResult(new ListToolsResult { Tools = ToolDefinitions.AllTools });
-            },
+                ListToolsHandler = (request, cancellationToken) =>
+                {
+                    return ValueTask.FromResult(new ListToolsResult { Tools = ToolDefinitions.AllTools });
+                },
 
-            CallToolHandler = async (request, cancellationToken) =>
-            {
-                var apiClient = request.Services.GetRequiredService<RunalyzeApiClient>();
-                var toolName = request.Params?.Name;
-                var arguments = request.Params?.Arguments ?? new Dictionary<string, JsonElement>();
+                CallToolHandler = async (request, cancellationToken) =>
+                {
+                    var apiClient = request.Services.GetRequiredService<RunalyzeApiClient>();
+                    var toolName = request.Params?.Name;
+                    var arguments = request.Params?.Arguments ?? new Dictionary<string, JsonElement>();
 
-                return await McpToolHandler.HandleToolCallAsync(apiClient, toolName, arguments, cancellationToken);
+                    return await McpToolHandler.HandleToolCallAsync(apiClient, toolName, arguments, cancellationToken);
+                }
             }
-        }
-    };
-});
+        };
+    })
+    .WithHttpTransport()
+    .WithToolsFromAssembly();
 
 var app = builder.Build();
 
-// Basic health check endpoint
 app.MapGet("/health", () => "OK");
+app.MapMcp();
 
 app.Run();
