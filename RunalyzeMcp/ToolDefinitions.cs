@@ -112,7 +112,13 @@ namespace RunalyzeMcp
                 InputSchema = JsonSerializer.Deserialize<JsonElement>(@"{\n    ""type"": ""object"",\n    ""properties"": {\n        ""token"": {\n            ""type"": ""string"",\n            ""description"": ""Runalyze API token""\n        },\n        ""id"": {\n            ""type"": ""integer"",\n            ""description"": ""Category ID""\n        }\n    },\n    ""required"": [""token"", ""id""]\n}")
             },
 
-            // Health Endpoints (1 tool)
+            // Health Endpoints (2 tools)
+            new Tool
+            {
+                Name = "api_v1health_get",
+                Description = "Get health data",
+                InputSchema = JsonSerializer.Deserialize<JsonElement>(@"{\n    ""type"": ""object"",\n    ""properties"": {\n        ""token"": {\n            ""type"": ""string"",\n            ""description"": ""Runalyze API token""\n        }\n    },\n    ""required"": [""token""]\n}")
+            },
             new Tool
             {
                 Name = "api_v1health_bulk_upload_post",
@@ -120,7 +126,15 @@ namespace RunalyzeMcp
                 InputSchema = JsonSerializer.Deserialize<JsonElement>(@"{\n    ""type"": ""object"",\n    ""properties"": {\n        ""token"": {\n            ""type"": ""string"",\n            ""description"": ""Runalyze API token""\n        },\n        ""file"": {\n            ""type"": ""string"",\n            ""description"": ""Health data file as base64-encoded string""\n        }\n    },\n    ""required"": [""token"", ""file""]\n}")
             },
 
-            // Blood Glucose Metrics (3 tools)
+            // Metrics Endpoints (2 tools)
+            new Tool
+            {
+                Name = "api_v1metrics_get",
+                Description = "Get metrics data",
+                InputSchema = JsonSerializer.Deserialize<JsonElement>(@"{\n    ""type"": ""object"",\n    ""properties"": {\n        ""token"": {\n            ""type"": ""string"",\n            ""description"": ""Runalyze API token""\n        }\n    },\n    ""required"": [""token""]\n}")
+            },
+
+            // Blood Glucose Metrics (4 tools)
             new Tool
             {
                 Name = "api_v1metrics_blood_glucose_get",

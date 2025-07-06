@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace RunalyzeMcp
 {
@@ -13,10 +14,10 @@ namespace RunalyzeMcp
         private readonly HttpClient _httpClient;
         private readonly string _baseUrl;
 
-        public RunalyzeApiClient(HttpClient httpClient)
+        public RunalyzeApiClient(HttpClient httpClient, IOptions<RunalyzeApiClientOptions> options)
         {
             _httpClient = httpClient;
-            _baseUrl = Environment.GetEnvironmentVariable("RUNALYZE_BASE_URL") ?? "https://runalyze.com";
+            _baseUrl = Environment.GetEnvironmentVariable("RUNALYZE_BASE_URL") ?? options.Value.BaseUrl;
         }
 
         private void AddTokenHeader(string token)

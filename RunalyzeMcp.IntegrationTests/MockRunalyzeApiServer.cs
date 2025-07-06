@@ -25,6 +25,17 @@ public class MockRunalyzeApiServer : IDisposable
 
     public string BaseUrl => _server.Url;
 
+    public void Start()
+    {
+        // Server is already started in constructor
+        // This method is for compatibility with test setup
+    }
+
+    public void Stop()
+    {
+        Dispose();
+    }
+
     private void SetupEndpoints()
     {
         SetupActivityEndpoints();

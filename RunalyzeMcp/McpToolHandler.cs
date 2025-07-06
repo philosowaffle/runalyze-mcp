@@ -76,6 +76,16 @@ namespace RunalyzeMcp
                         response = await apiClient.GetBloodGlucoseMetricsAsync(token);
                         break;
 
+                    case "api_v1metrics_blood_glucose_get":
+                        int? bgPage = null;
+                        string? bgOrderById = null;
+                        if (arguments.TryGetValue("page", out JsonElement bgPageObj) && bgPageObj.ValueKind == JsonValueKind.Number)
+                            bgPage = bgPageObj.GetInt32();
+                        if (arguments.TryGetValue("orderById", out JsonElement bgOrderObj) && bgOrderObj.ValueKind == JsonValueKind.String)
+                            bgOrderById = bgOrderObj.GetString();
+                        response = await apiClient.GetBloodGlucoseMetricsAsync(token, bgPage, bgOrderById);
+                        break;
+
                     case "api_v1raceresults_get":
                         response = await apiClient.GetRaceResultsAsync(token);
                         break;

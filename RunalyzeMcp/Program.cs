@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://0.0.0.0:8080");
 
 // Register RunalyzeApiClient as singleton
+builder.Services.Configure<RunalyzeApiClientOptions>(options => { });
 builder.Services.AddHttpClient<RunalyzeApiClient>();
 
 // Configure MCP server
@@ -28,6 +29,9 @@ builder.Services
 
                 CallToolHandler = async (request, cancellationToken) =>
                 {
+                    if (request.Services == null)
+                        throw new McpException("Services not available");
+                    
                     var apiClient = request.Services.GetRequiredService<RunalyzeApiClient>();
                     var toolName = request.Params?.Name;
                     var arguments = request.Params?.Arguments ?? new Dictionary<string, JsonElement>();
