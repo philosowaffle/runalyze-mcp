@@ -24,4 +24,8 @@ Runalyze MCP is a .NET 9 ASP.NET Core application that exposes the Runalyze API 
 
 All MCP tool definitions are now located in `RunalyzeMcp/ToolDefinitions.cs` as a static list. These are referenced in `Program.cs` for MCP server registration. This approach enables centralized and maintainable management of all tool schemas and metadata, ensuring consistency and ease of updates.
 
-The MCP server uses these definitions to dynamically register all supported tools at startup. 
+The MCP server uses these definitions to dynamically register all supported tools at startup.
+
+## Tool Handler
+
+The tool execution logic is implemented in `RunalyzeMcp/McpToolHandler.cs` as a static class. This contains the `HandleToolCallAsync` method that processes all MCP tool calls and delegates to the appropriate Runalyze API endpoints. This separation improves code organization and maintainability. 
