@@ -1,0 +1,66 @@
+{
+    "dotnet.defaultSolution": "RunalyzeMcp.sln",
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+    "dotnet.inlayHints.enableInlayHintsForParameters": true,
+    "dotnet.inlayHints.enableInlayHintsForLiteralParameters": true,
+    "dotnet.inlayHints.enableInlayHintsForIndexerParameters": true,
+    "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters": true,
+    "dotnet.inlayHints.enableInlayHintsForOtherParameters": true,
+    "dotnet.inlayHints.suppressInlayHintsForParametersThatDifferOnlyBySuffix": true,
+    "dotnet.inlayHints.suppressInlayHintsForParametersThatMatchMethodIntent": true,
+    "dotnet.inlayHints.suppressInlayHintsForParametersThatMatchArgumentName": true,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableImportCompletion": true,
+    "csharp.semanticHighlighting.enabled": true,
+    "csharp.format.enable": true,
+    "csharp.inlayHints.parameters.enabled": true,
+    "csharp.inlayHints.parameters.forLiteralParameters": true,
+    "csharp.inlayHints.parameters.forIndexerParameters": true,
+    "csharp.inlayHints.parameters.forObjectCreationParameters": true,
+    "csharp.inlayHints.parameters.forOtherParameters": true,
+    "csharp.inlayHints.parameters.suppressForParametersThatDifferOnlyBySuffix": true,
+    "csharp.inlayHints.parameters.suppressForParametersThatMatchMethodIntent": true,
+    "csharp.inlayHints.parameters.suppressForParametersThatMatchArgumentName": true,
+    "csharp.inlayHints.types.enabled": true,
+    "csharp.inlayHints.types.forImplicitVariableTypes": true,
+    "csharp.inlayHints.types.forLambdaParameterTypes": true,
+    "csharp.inlayHints.types.forImplicitObjectCreation": true,
+    "files.exclude": {
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vs": true,
+        "**/TestResults": true
+    },
+    "files.watcherExclude": {
+        "**/bin/**": true,
+        "**/obj/**": true,
+        "**/.vs/**": true,
+        "**/TestResults/**": true
+    },
+    "search.exclude": {
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vs": true,
+        "**/TestResults": true
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.defaultProfile.osx": "bash",
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "appsettings.json",
+                "appsettings.*.json"
+            ],
+            "url": "https://json.schemastore.org/appsettings.json"
+        }
+    ]
+}
