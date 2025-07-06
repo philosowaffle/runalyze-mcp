@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using RunalyzeMcp;
+using Microsoft.Extensions.Options;
 
 namespace RunalyzeMcp.Tests
 {
@@ -17,7 +18,8 @@ namespace RunalyzeMcp.Tests
         public void Setup()
         {
             _httpClient = new HttpClient();
-            _client = new RunalyzeApiClient(_httpClient);
+            var options = Options.Create(new RunalyzeApiClientOptions());
+            _client = new RunalyzeApiClient(_httpClient, options);
         }
 
         [TearDown]
@@ -31,7 +33,8 @@ namespace RunalyzeMcp.Tests
         [Test]
         public void UsesDefaultBaseUrl_WhenEnvNotSet()
         {
-            var client = new RunalyzeApiClient(new HttpClient());
+            var options = Options.Create(new RunalyzeApiClientOptions());
+            var client = new RunalyzeApiClient(new HttpClient(), options);
             var baseUrl = typeof(RunalyzeApiClient).GetField("_baseUrl", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.GetValue(client);
             Assert.That(baseUrl, Is.EqualTo("https://runalyze.com"));
         }
@@ -40,7 +43,8 @@ namespace RunalyzeMcp.Tests
         public void UsesEnvBaseUrl_WhenSet()
         {
             Environment.SetEnvironmentVariable("RUNALYZE_BASE_URL", "https://test.runalyze.com");
-            var client = new RunalyzeApiClient(new HttpClient());
+            var options = Options.Create(new RunalyzeApiClientOptions());
+            var client = new RunalyzeApiClient(new HttpClient(), options);
             var baseUrl = typeof(RunalyzeApiClient).GetField("_baseUrl", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.GetValue(client);
             Assert.That(baseUrl, Is.EqualTo("https://test.runalyze.com"));
             Environment.SetEnvironmentVariable("RUNALYZE_BASE_URL", null);
