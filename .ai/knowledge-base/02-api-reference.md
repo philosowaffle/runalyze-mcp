@@ -1,3 +1,7 @@
+# MCP Server API Reference
+
+> **Note:** All MCP tool definitions are located in `RunalyzeMcp/ToolDefinitions.cs` and registered in `Program.cs`. For details on the external Runalyze API, see [05-external-api-integration.md](05-external-api-integration.md).
+
 # API Reference: Runalyze MCP Server
 
 ## Overview

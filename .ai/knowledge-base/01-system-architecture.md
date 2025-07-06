@@ -18,4 +18,10 @@ Runalyze MCP is a .NET 9 ASP.NET Core application that exposes the Runalyze API 
 
 ## Deployment
 - Exposes HTTP on port 8080
-- Docker image published to `ghcr.io/philosowaffle/runalyze-mcp` 
+- Docker image published to `ghcr.io/philosowaffle/runalyze-mcp`
+
+## Tool Definitions
+
+All MCP tool definitions are now located in `RunalyzeMcp/ToolDefinitions.cs` as a static list. These are referenced in `Program.cs` for MCP server registration. This approach enables centralized and maintainable management of all tool schemas and metadata, ensuring consistency and ease of updates.
+
+The MCP server uses these definitions to dynamically register all supported tools at startup. 

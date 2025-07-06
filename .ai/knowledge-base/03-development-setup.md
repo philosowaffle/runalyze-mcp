@@ -31,4 +31,8 @@ dotnet test
 - Run the container:
   ```sh
   docker run -p 8080:8080 -e RUNALYZE_BASE_URL=https://custom-url runalyze-mcp
-  ``` 
+  ```
+
+## MCP Tool Definitions
+
+All MCP tool definitions are managed in `RunalyzeMcp/ToolDefinitions.cs` and referenced in `Program.cs`. To add or modify MCP tools, update the static list in ToolDefinitions.cs. 

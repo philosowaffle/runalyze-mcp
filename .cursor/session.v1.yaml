@@ -1,0 +1,5 @@
+# Session Progress
+
+- MCP tool definitions have been extracted to RunalyzeMcp/ToolDefinitions.cs and are referenced in Program.cs
+- Documentation and knowledge base updated to reflect this structure
+- Ready for next development steps (testing, Dockerization, etc.) 
