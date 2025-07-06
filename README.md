@@ -224,19 +224,3 @@ dotnet test
 4. Add tests for new functionality
 5. Ensure all tests pass
 6. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-- [Runalyze API Documentation](https://runalyze.com/help/article/personal-api)
-- [Model Context Protocol](https://modelcontextprotocol.io/)
-- [Issues](https://github.com/philosowaffle/runalyze-mcp/issues)
-
-## Acknowledgments
-
-- [Runalyze](https://runalyze.com/) for providing the comprehensive fitness tracking API
-- [Model Context Protocol](https://modelcontextprotocol.io/) for the MCP specification
-- [.NET MCP SDK](https://github.com/modelcontextprotocol/dotnet-mcp) for the .NET implementation
