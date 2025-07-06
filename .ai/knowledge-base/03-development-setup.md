@@ -226,11 +226,66 @@ docker-compose --profile dev up -d
 docker-compose logs -f runalyze-mcp-dev
 ```
 
+## Visual Studio Code Development
+
+### VSCode Configuration
+The project includes comprehensive VSCode configuration for enhanced development experience:
+
+#### Configuration Files
+- `.vscode/tasks.json` - Build, test, and Docker tasks
+- `.vscode/launch.json` - Debug configurations
+- `.vscode/settings.json` - Workspace-specific settings
+- `.vscode/extensions.json` - Recommended extensions
+
+#### Recommended Extensions
+- **C# Dev Kit** - Complete C# development experience
+- **C#** - C# language support
+- **Docker** - Docker container management
+- **Remote - Containers** - Development inside containers
+- **REST Client** - Testing HTTP endpoints
+- **PowerShell** - PowerShell scripting support
+
+#### Available Tasks (`Ctrl+Shift+P` → "Tasks: Run Task")
+- **build** - Build the entire solution
+- **clean** - Clean build outputs
+- **run-local** - Build and run the application locally
+- **test** - Run all unit tests
+- **test-with-coverage** - Run tests with code coverage
+- **docker-build** - Build Docker image with "dev" tag
+- **docker-run** - Build and run Docker container
+- **docker-compose-up** - Start production services
+- **docker-compose-down** - Stop services
+- **docker-compose-dev-up** - Start development services
+- **docker-logs** - View container logs
+
+#### Debug Configurations (F5 or Debug panel)
+- **Debug MCP Server** - Standard debugging with development settings
+- **Debug MCP Server (with Custom Base URL)** - Debug with custom Runalyze API URL
+- **Debug MCP Server (Production Mode)** - Debug with production settings
+- **Attach to Docker Container** - Debug production container
+- **Attach to Docker Container (Dev Profile)** - Debug development container
+
+### Development Workflow with VSCode
+1. **Open project**: `code .`
+2. **Install extensions**: Accept recommended extensions prompt
+3. **Build project**: `Ctrl+Shift+P` → "Tasks: Run Task" → "build"
+4. **Run tests**: `Ctrl+Shift+P` → "Tasks: Run Task" → "test"
+5. **Debug locally**: `F5` → "Debug MCP Server"
+6. **Docker development**: `Ctrl+Shift+P` → "Tasks: Run Task" → "docker-compose-dev-up"
+
+### Code Quality Features
+- Format on save, paste, and type
+- Automatic import organization
+- Fix all issues on save
+- Roslyn analyzers enabled
+- Semantic highlighting
+- IntelliSense enhancements
+
 ## Next Steps
 - [x] Complete MCP server integration (47 endpoints)
 - [x] Comprehensive unit testing (61 tests)
 - [x] Docker containerization
 - [x] Docker Compose configuration
+- [x] VSCode development tasks and debug configurations
 - [ ] GitHub Actions CI/CD pipeline
-- [ ] VSCode development tasks
 - [ ] End-user documentation updates 

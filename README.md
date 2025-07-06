@@ -170,7 +170,33 @@ The server exposes all Runalyze API endpoints as MCP tools. Tool names match the
 
 - .NET 9 SDK
 - Docker (optional)
+- Visual Studio Code (recommended for development)
 - Runalyze account with API access
+
+### Visual Studio Code Development
+
+This project includes comprehensive VSCode configuration for an enhanced development experience:
+
+#### Getting Started
+1. Open the project in VSCode: `code .`
+2. Install recommended extensions (VSCode will prompt you)
+3. Use `Ctrl+Shift+P` → "Tasks: Run Task" to access available tasks
+
+#### Available Tasks
+- **build** - Build the entire solution
+- **run-local** - Build and run the application locally
+- **test** - Run all unit tests
+- **test-with-coverage** - Run tests with code coverage
+- **docker-build** - Build Docker image
+- **docker-run** - Build and run Docker container
+- **docker-compose-up** - Start production services
+- **docker-compose-dev-up** - Start development services
+
+#### Debug Configurations
+- **Debug MCP Server** - Standard debugging
+- **Debug MCP Server (with Custom Base URL)** - Debug with custom Runalyze API URL
+- **Debug MCP Server (Production Mode)** - Debug with production settings
+- **Attach to Docker Container** - Debug running containers
 
 ### Building
 
@@ -184,6 +210,8 @@ dotnet test
 # Build Docker image
 docker build -t runalyze-mcp .
 ```
+
+For detailed development workflows and troubleshooting, see the [Development Guide](docs/development-guide.md).
 
 ### Project Structure
 

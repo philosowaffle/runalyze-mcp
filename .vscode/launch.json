@@ -1,0 +1,111 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug MCP Server",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/RunalyzeMcp/bin/Debug/net9.0/RunalyzeMcp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/RunalyzeMcp",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:8080",
+                "RUNALYZE_BASE_URL": "https://runalyze.com/api/v1"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Debug MCP Server (with Custom Base URL)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/RunalyzeMcp/bin/Debug/net9.0/RunalyzeMcp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/RunalyzeMcp",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:8080",
+                "RUNALYZE_BASE_URL": "${input:runalyzeBaseUrl}"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Debug MCP Server (Production Mode)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/RunalyzeMcp/bin/Debug/net9.0/RunalyzeMcp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/RunalyzeMcp",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production",
+                "ASPNETCORE_URLS": "http://localhost:8080",
+                "RUNALYZE_BASE_URL": "https://runalyze.com/api/v1"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Attach to Docker Container",
+            "type": "coreclr",
+            "request": "attach",
+            "processName": "dotnet",
+            "pipeTransport": {
+                "pipeProgram": "docker",
+                "pipeArgs": ["exec", "-i", "runalyze-mcp"],
+                "debuggerPath": "/vsdbg/vsdbg",
+                "pipeCwd": "${workspaceFolder}",
+                "quoteArgs": false
+            },
+            "sourceFileMap": {
+                "/app": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": "Attach to Docker Container (Dev Profile)",
+            "type": "coreclr",
+            "request": "attach",
+            "processName": "dotnet",
+            "pipeTransport": {
+                "pipeProgram": "docker",
+                "pipeArgs": ["exec", "-i", "runalyze-mcp-dev"],
+                "debuggerPath": "/vsdbg/vsdbg",
+                "pipeCwd": "${workspaceFolder}",
+                "quoteArgs": false
+            },
+            "sourceFileMap": {
+                "/app": "${workspaceFolder}"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "runalyzeBaseUrl",
+            "description": "Enter the Runalyze Base URL",
+            "default": "https://runalyze.com/api/v1",
+            "type": "promptString"
+        }
+    ]
+}
