@@ -1,0 +1,9 @@
+---
+alwaysApply: true
+---
+
+# Knowledge Base Reference Rule
+
+## Always Consult Knowledge Base Before Making Changes
+
+Before implementing any changes to the P2G codebase, you MUST reference the comprehensive knowledge base located in [.ai/knowledge-base/README.md](mdc:.ai/knowledge-base/README.md).

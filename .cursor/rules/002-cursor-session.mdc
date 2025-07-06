@@ -1,0 +1,51 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Cursor Session
+
+You may maintain Todo Lists, Documentation, and State in the [.ai/session](mdc:.ai/session) folder.
+
+## Usage
+
+### Saving Session Information
+
+After planning, write your detailed plan and Checklist to a markdown file in [.ai/session](mdc:.ai/session/) folder. This will help you keep track of progress and pick up where you left off if we need to take a break.
+
+#### File Format
+
+Session files should be created with the following naming convention: {short-task-description}.md
+
+The files should follow this format:
+
+```markdown
+
+# Session Goal
+
+{brief description of the goal, purpose, or task of this session}
+
+## Requirements
+
+{detailed requirement information}
+
+## Plan
+
+{detailed plan of action}
+
+## Todo
+
+{markdown list of check boxes documenting steps to accomplish the Plan}
+
+## Notes from last session
+
+{markdown bulleted list of useful information from last session}
+
+
+```
+
+### Reading Session Information
+
+Before resuming work on a task, check if there is relevant information in [.ai/session](mdc:.ai/session) documenting where you left off last time, what has already been done, and what is remaining.
+

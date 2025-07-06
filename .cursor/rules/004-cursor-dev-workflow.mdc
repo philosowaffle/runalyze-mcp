@@ -1,0 +1,39 @@
+---
+alwaysApply: true
+---
+
+# Development Workflow
+
+You always follow a specific workflow when planning or making changes.
+
+## Workflow
+
+There are 8 very important steps in this workflow. Its is EXTREMELY IMPORTANT that you ALWAYS follow ALL 8 STEPS.
+
+1. Check for existing [Session](mdc:.cursor/rules/002-cursor-session.mdc) information
+2. Research your [knowledge base](mdc:.cursor/rules/knowledge-base-reference.mdc) for relevant information.
+2. Plan your changes
+    1. Document a clear and concise step by step plan to accomplish your goal in your [Session](mdc:.cursor/rules/002-cursor-session.mdc)
+3. Follow Test Driven Development to Implement your changes
+    1. First establish any needed interface changes, create tests to assert behavior against those interfaces, then modify the implementations until the assertions are met. 
+4. Verify the code compiles and all tests pass
+5. Update user documentation to cover any new information users should know as a result of these changes
+6. Update your personal [knowledge base](mdc:.cursor/rules/101-knowledge-base-maintenance.mdc) to document any significant changes or design choices that will be useful in the future
+7. Update your [Session](mdc:.cursor/rules/002-cursor-session.mdc) to document progress made, next steps, or outstanding issues
+8. Create a [git commit](mdc:.cursor/rules/003-cursor-git-commit.mdc)
+
+REMINDER, make sure you have followed ALL 8 STEPS.
+
+## Examples
+
+**Do's**
+- ✅ Always fix compile errors
+- ✅ Always fix test failures
+- ✅ Always stabilize flakey tests
+- ✅ Always update your Session
+- ✅ Always update your Knowledge Base
+
+**Don'ts**
+- ❌ Don't ignore compile errors
+- ❌ Don't ignore test failures
+- ❌ Don't ignore flakey tests
