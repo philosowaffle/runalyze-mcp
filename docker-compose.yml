@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  runalyze-mcp:
+    image: ghcr.io/philosowaffle/runalyze-mcp:latest
+    container_name: runalyze-mcp
+    ports:
+      - "8080:8080"
+    environment:
+      - RUNALYZE_BASE_URL=https://runalyze.com/api/v1
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "com.docker.compose.project=runalyze-mcp"
+      - "com.docker.compose.service=runalyze-mcp"
+      - "traefik.enable=true"
+      - "traefik.http.routers.runalyze-mcp.rule=Host(`runalyze-mcp.local`)"
+      - "traefik.http.services.runalyze-mcp.loadbalancer.server.port=8080"
+
+  # Development service for local development
+  runalyze-mcp-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: runalyze-mcp-dev
+    ports:
+      - "8081:8080"
+    environment:
+      - RUNALYZE_BASE_URL=https://runalyze.com/api/v1
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    volumes:
+      - .:/app
+      - /app/bin
+      - /app/obj
+    restart: unless-stopped
+    profiles:
+      - dev
+    labels:
+      - "com.docker.compose.project=runalyze-mcp"
+      - "com.docker.compose.service=runalyze-mcp-dev"
+
+networks:
+  default:
+    name: runalyze-mcp-network 
